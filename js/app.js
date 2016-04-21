@@ -34,12 +34,20 @@ var model = {
 };
 
 /*====Controller====*/
-var controller = {
 	//1.) Access list of cats and send to view for rendering
 	//2.) Set currently selected cat for view to display
 	//3.) Initialized model and views
 	//4.) Iterate cat's click count when primary cat or cat list is selected
 	//5.) Access current cat for view
+var controller = {
+	init: function () {
+		// setup catListView and featuredCatView
+		catListView.init();
+		featuredCatView.init();
+		//Select current cat from model
+		model.currentCat = model.cats[0];
+	};
+
 };
 
 
@@ -51,8 +59,14 @@ var controller = {
 //3.) Store pointers to DOM objects for easy access when rendering
 
 
-var catList = {
+var catListView = {
+	init: 
+	render:
+};
 
+var featuredCatView = {
+	init:
+	render:
 };
 
 
