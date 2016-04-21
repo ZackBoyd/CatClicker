@@ -171,9 +171,9 @@ var adminView = {
 		this.formImgSrc = document.getElementById('formImgSrc');
 		this.formClickCount = document.getElementById('formClickCount');
 		//Load cat values into form
-		this.formCatName.textContent = currentCat.name;
-		this.formImgSrc.textContent = currentCat.imgSrc;
-		this.formClickCount.textContent = currentCat.clickCount;
+		this.formCatName.value = currentCat.name;
+		this.formImgSrc.value = currentCat.imgSrc;
+		this.formClickCount.value = currentCat.clickCount;
 		//Add listeners for cancel and save buttons
 		cancelBtn.addEventListener('click', function(){
 			adminView.hideAdmin();
