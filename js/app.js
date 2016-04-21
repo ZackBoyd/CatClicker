@@ -36,8 +36,8 @@ var model = {
 /*====Controller====*/
 	//1.) Access list of cats and send to view for rendering
 	//2.) Set currently selected cat for view to display
-	//3.) Initialized model and views
-	//4.) Iterate cat's click count when primary cat or cat list is selected
+	//3.) Initialize views
+	//4.) Iterate cat's click count when featured cat is clicked
 	//5.) Access current cat for view
 var controller = {
 	init: function () {
@@ -47,7 +47,16 @@ var controller = {
 		//Select current cat from model
 		model.currentCat = model.cats[0];
 	};
-
+	getCats: function(){
+		return model.cats;
+	};
+	getCurrentCat: function(){
+		return model.currentCat;
+	};
+	countClick: function(){
+		model.currentCat.clickCount++;
+		catListView.render();
+	};
 };
 
 
@@ -60,7 +69,10 @@ var controller = {
 
 
 var catListView = {
-	init: 
+	init: function(){
+		this.catElem = $('#featuredCat');
+		this.catNameElem = $('')
+	}
 	render:
 };
 
