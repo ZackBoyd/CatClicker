@@ -152,30 +152,41 @@ var adminView = {
 
 	init: function(){
 		//Define DOM pointers for the admin button and the form
-		var btn = document.getElementById('adminButton');
+		var adminBtn = document.getElementById('adminButton');
 		//add click listener to showAdmin button on initialization so that the function can run when the admin button is clicked
-		btn.addEventListener('click', function(){
+		adminBtn.addEventListener('click', function(){
 			//Get current cat and send to showAdmin
-			this.showAdmin();
+			adminView.showAdmin();
 		})
 	},
 	
 	showAdmin: function(){
-		var form = document.getElementById('adminForm');
+		var cancelBtn = document.getElementById('adminCancelButton');
+		var saveBtn = document.getElementById('adminSaveButton');
 		var currentCat = controller.getCurrentCat();
 		//Show admin form and load currentCat name/imgSrc/clickCount
 		//Define form DOM pointer and cat values for inseration into form on show
+		$('#adminForm').show();
 		this.formCatName = document.getElementById('formCatName');
 		this.formImgSrc = document.getElementById('formImgSrc');
 		this.formClickCount = document.getElementById('formClickCount');
 		//Load cat values into form
-		//this.formCatName.textContent = currentCat.name;
-		//this.formImgSrc.textContent = currentCat.imgSrc;
-		//this.formClickCount.textContent = currentCat.clickCount;
-		$('#adminForm').show();
+		this.formCatName.textContent = currentCat.name;
+		this.formImgSrc.textContent = currentCat.imgSrc;
+		this.formClickCount.textContent = currentCat.clickCount;
+		//Add listeners for cancel and save buttons
+		cancelBtn.addEventListener('click', function(){
+			adminView.hideAdmin();
+		})
+		saveBtn.addEventListener('click', function(){
+			//Update currentCat with input from form
+
+			//Close admin form
+			hideAdmin();
+		})
 	},
 	hideAdmin: function(){
-		form.hide();
+		$('#adminForm').hide();
 	}
 };
 
