@@ -68,16 +68,39 @@ var controller = {
 //3.) Store pointers to DOM objects for easy access when rendering
 
 
-var catListView = {
+var featuredCatView = {
+
 	init: function(){
+		//Pointers for all the DOM elements that I'll put the featured cat data into
 		this.catElem = $('#featuredCat');
-		this.catNameElem = $('')
+		this.catNameElem = $('#featuredCatName');
+		this.catCountElem = $('#featuredCatCount');
+		this.catImageElem = $('#featuredCatImage');
+		//Add listener for click to increment click counter
+		this.catImageElem.addEventListener(click(function(){
+			controller.countClick();
+		});
+
+		this.render();
+
+		},
+
+	render: function(){
+		var currentCat = controller.getCurrentCat();
+        this.countElem.textContent = currentCat.clickCount;
+        this.catNameElem.textContent = currentCat.name;
+        this.catImageElem.src = currentCat.imgSrc;
 	}
-	render:
 };
 
-var featuredCatView = {
-	init:
+var catListView = {
+
+	init: function(){
+		//Set pointer for catList
+		this.catListElem = $('#catList');
+		//Render cat list
+		this.render();
+	}
 	render:
 };
 
