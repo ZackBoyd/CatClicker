@@ -39,6 +39,9 @@ var model = {
 	//3.) Initialize views
 	//4.) Iterate cat's click count when featured cat is clicked
 	//5.) Access current cat for view
+	//Admin Features
+	//1.) Function to update cat name/img/clickCount when save button is clicked
+
 var controller = {
 	init: function () {
 		//Select current cat from model
@@ -66,9 +69,14 @@ var controller = {
 
 
 /*====View====*/
+//Premium Features
 //1.) Render catList
 //2.) Render featuredCat
 //3.) Store pointers to DOM objects for easy access when rendering
+//Premium Pro Features
+//1.) Admin view
+//2.) Function to render admin view with currentCat name/img/clickCount inserted
+//3.) Function to hide admin view
 
 
 var featuredCatView = {
