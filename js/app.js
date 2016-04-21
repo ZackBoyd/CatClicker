@@ -1,4 +1,5 @@
 
+
 /*====Model====*/
 
 var model = {
@@ -7,27 +8,27 @@ var model = {
 
 	{
 		'name':'Whiskers', 
-		picture:'cat.png', 
+		imgSrc:'cat.png', 
 		clickCount:0
 	},
 	{
 		name:'Sneaker',
-		picture:'cat2.png', 
+		imgSrc:'cat2.png', 
 		clickCount:0
 	},
 	{
 		name:'Grumpy',
-		picture:'grumpy.png',
+		imgSrc:'grumpy.png',
 		clickCount:0
 	},
 	{
 		name:'Reggie',
-		picture:'blackcat.png',
+		imgSrc:'blackcat.png',
 		clickCount:0
 	},
 	{
 		name:'Hunter',
-		picture:'hunter.png',
+		imgSrc:'hunter.png',
 		clickCount:0
 	}
 	]
@@ -49,6 +50,7 @@ var controller = {
 		// setup catListView and featuredCatView
 		catListView.init();
 		featuredCatView.init();
+		adminView.init();
 	},
 	getCats: function(){
 		return model.cats;
@@ -75,7 +77,7 @@ var controller = {
 //3.) Store pointers to DOM objects for easy access when rendering
 //Premium Pro Features
 //1.) Admin view
-//2.) Function to render admin view with currentCat name/img/clickCount inserted
+//2.) Function to show admin view with currentCat name/img/clickCount inserted
 //3.) Function to hide admin view
 
 
@@ -100,7 +102,7 @@ var featuredCatView = {
 		var currentCat = controller.getCurrentCat();
         this.catCountElem.textContent = currentCat.clickCount;
         this.catNameElem.textContent = currentCat.name;
-        this.catImageElem.src = 'img/' + currentCat.picture;
+        this.catImageElem.src = 'img/' + currentCat.imgSrc;
 	}
 };
 
@@ -146,5 +148,37 @@ var catListView = {
     }
 };
 
+var adminView = {
+
+	init: function(){
+		//Define DOM pointers for the admin button and the form
+		var btn = document.getElementById('adminButton');
+		//add click listener to showAdmin button on initialization so that the function can run when the admin button is clicked
+		btn.addEventListener('click', function(){
+			//Get current cat and send to showAdmin
+
+		})
+
+		this.showAdmin();
+	},
+	
+	showAdmin: function(){
+		var form = document.getElementById('adminForm');
+		var currentCat = controller.getCurrentCat();
+		//Show admin form and load currentCat name/imgSrc/clickCount
+		//Define form DOM pointer and cat values for inseration into form on show
+		this.formCatName = document.getElementById('formCatName');
+		this.formImgSrc = document.getElementById('formImgSrc');
+		this.formClickCount = document.getElementById('formClickCount');
+		//Load cat values into form
+		//this.formCatName.textContent = currentCat.name;
+		//this.formImgSrc.textContent = currentCat.imgSrc;
+		//this.formClickCount.textContent = currentCat.clickCount;
+		$('#adminForm').show();
+	},
+	hideAdmin: function(){
+		form.hide();
+	}
+};
 
 controller.init();
