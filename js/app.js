@@ -156,10 +156,8 @@ var adminView = {
 		//add click listener to showAdmin button on initialization so that the function can run when the admin button is clicked
 		btn.addEventListener('click', function(){
 			//Get current cat and send to showAdmin
-
+			this.showAdmin();
 		})
-
-		this.showAdmin();
 	},
 	
 	showAdmin: function(){
