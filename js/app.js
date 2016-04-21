@@ -122,7 +122,7 @@ var catListView = {
             elem = document.createElement('li');
             elem.textContent = cat.name;
 
-            // on click, setCurrentCat and render the catView
+            // on click, setCurrentCat and render the featuredCatView
             // (this uses our closure-in-a-loop trick to connect the value
             //  of the cat variable to the click event function)
             elem.addEventListener('click', (function(catCopy) {
