@@ -1,10 +1,37 @@
-var cats = [
-	{"name":"Whiskers", "picture":"cat.png", "clicks":0},
-	{"name":"Sneaker", "picture":"cat2.png", "clicks":0},
-	{"name":"Grumpy", "picture":"grumpy.png", "clicks":0},
-	{"name":"Reggie", "picture":"blackcat.png", "clicks":0},
-	{"name":"Hunter", "picture":"hunter.png", "clicks":0}
-];
+
+//====Model====//
+
+var model = {
+	currentCat = null,
+	cats: [
+
+	{
+		'name':'Whiskers', 
+		picture:'cat.png', 
+		clickCount:0
+	},
+	{
+		name:Sneaker,
+		picture:'cat2.png', 
+		clickCount:0
+	},
+	{
+		name:'Grumpy',
+		picture:'grumpy.png',
+		clickCount:0
+	},
+	{
+		name:'Reggie',
+		picture:'blackcat.png',
+		clickCount:0
+	},
+	{
+		name:'Hunter',
+		picture:'hunter.png',
+		clickCount:
+		0}
+	];
+};
 
 window.onload = function function_name() {
 	for (var i = 0; i < cats.length; i++) {
