@@ -1,5 +1,5 @@
 
-//====Model====//
+/*====Model====*/
 
 var model = {
 	currentCat = null,
@@ -33,17 +33,27 @@ var model = {
 	];
 };
 
-window.onload = function function_name() {
-	for (var i = 0; i < cats.length; i++) {
-		var catName = cats[i].name;
-		var catPic = cats[i].picture;
-		var catElem = "#" + catName;
-		var catHTML = "<li>" + catName + "</li>" + 
-			"<img src='img/" + catPic + "'" + "class=" + "'img-thumbnail'" + "id=" + catName + "></img>";
-		$('#catList').append(catHTML);
-		$(catName).click(function(e){
-			$('#featuredCatPic').attr("src", catPic);
-		})
-	};	
+/*====Controller====*/
+var controller = {
+	//1.) Access list of cats and send to view for rendering
+	//2.) Set currently selected cat for view to display
+	//3.) Initialized model and views
+	//4.) Iterate cat's click count when primary cat or cat list is selected
+	//5.) Access current cat for view
 };
 
+
+
+
+/*====View====*/
+//1.) Render catList
+//2.) Render featuredCat
+//3.) Store pointers to DOM objects for easy access when rendering
+
+
+var catList = {
+
+};
+
+
+controller.init();
