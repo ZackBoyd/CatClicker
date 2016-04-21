@@ -2,7 +2,7 @@
 /*====Model====*/
 
 var model = {
-	currentCat = null,
+	currentCat: null,
 	cats: [
 
 	{
@@ -11,7 +11,7 @@ var model = {
 		clickCount:0
 	},
 	{
-		name:Sneaker,
+		name:'Sneaker',
 		picture:'cat2.png', 
 		clickCount:0
 	},
@@ -28,9 +28,9 @@ var model = {
 	{
 		name:'Hunter',
 		picture:'hunter.png',
-		clickCount:
-		0}
-	];
+		clickCount:0
+	}
+	]
 };
 
 /*====Controller====*/
@@ -41,22 +41,25 @@ var model = {
 	//5.) Access current cat for view
 var controller = {
 	init: function () {
+		//Select current cat from model
+		model.currentCat = model.cats[0];
 		// setup catListView and featuredCatView
 		catListView.init();
 		featuredCatView.init();
-		//Select current cat from model
-		model.currentCat = model.cats[0];
-	};
+	},
 	getCats: function(){
 		return model.cats;
-	};
+	},
+	setCurrentCat: function(cat){
+		model.currentCat = cat;
+	},
 	getCurrentCat: function(){
 		return model.currentCat;
-	};
+	},
 	countClick: function(){
 		model.currentCat.clickCount++;
-		catListView.render();
-	};
+		featuredCatView.render();
+	}
 };
 
 
@@ -72,24 +75,24 @@ var featuredCatView = {
 
 	init: function(){
 		//Pointers for all the DOM elements that I'll put the featured cat data into
-		this.catElem = $('#featuredCat');
-		this.catNameElem = $('#featuredCatName');
-		this.catCountElem = $('#featuredCatCount');
-		this.catImageElem = $('#featuredCatImage');
+		this.catElem = document.getElementById('featuredCat');
+		this.catNameElem = document.getElementById('featuredCatName');
+		this.catCountElem = document.getElementById('featuredCatCount');
+		this.catImageElem = document.getElementById('featuredCatImage');
 		//Add listener for click to increment click counter
-		this.catImageElem.addEventListener(click(function(){
+		this.catImageElem.addEventListener('click', function(){
 			controller.countClick();
 		});
 
 		this.render();
 
-		},
+	},
 
 	render: function(){
 		var currentCat = controller.getCurrentCat();
-        this.countElem.textContent = currentCat.clickCount;
+        this.catCountElem.textContent = currentCat.clickCount;
         this.catNameElem.textContent = currentCat.name;
-        this.catImageElem.src = currentCat.imgSrc;
+        this.catImageElem.src = 'img/' + currentCat.picture;
 	}
 };
 
@@ -97,11 +100,42 @@ var catListView = {
 
 	init: function(){
 		//Set pointer for catList
-		this.catListElem = $('#catList');
+		this.catListElem = document.getElementById('catList');
 		//Render cat list
 		this.render();
-	}
-	render:
+	},
+
+	render: function() {
+        var cat, elem, i;
+        // get the cats we'll be rendering from the controller
+        var cats = controller.getCats();
+
+        // empty the cat list
+        this.catListElem.innerHTML = '';
+
+        // loop over the cats
+        for (i = 0; i < cats.length; i++) {
+            // this is the cat we're currently looping over
+            cat = cats[i];
+
+            // make a new cat list item and set its text
+            elem = document.createElement('li');
+            elem.textContent = cat.name;
+
+            // on click, setCurrentCat and render the catView
+            // (this uses our closure-in-a-loop trick to connect the value
+            //  of the cat variable to the click event function)
+            elem.addEventListener('click', (function(catCopy) {
+                return function() {
+                    controller.setCurrentCat(catCopy);
+                    featuredCatView.render();
+                };
+            })(cat));
+
+            // finally, add the element to the list
+            this.catListElem.appendChild(elem);
+        }
+    }
 };
 
 
