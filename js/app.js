@@ -64,6 +64,16 @@ var controller = {
 	countClick: function(){
 		model.currentCat.clickCount++;
 		featuredCatView.render();
+	},
+	saveData: function(){
+		var currentCat = controller.getCurrentCat();
+		//Update cat 
+		currentCat.name = adminView.formCatName.value;
+		currentCat.imgSrc = adminView.formImgSrc.value;
+		currentCat.clickCount = adminView.formClickCount.value;
+		//Re-render catList and featuredCat views
+		featuredCatView.render();
+		catListView.render();
 	}
 };
 
@@ -139,6 +149,7 @@ var catListView = {
                 return function() {
                     controller.setCurrentCat(catCopy);
                     featuredCatView.render();
+                    adminView.showAdmin();
                 };
             })(cat));
 
@@ -178,11 +189,12 @@ var adminView = {
 		cancelBtn.addEventListener('click', function(){
 			adminView.hideAdmin();
 		})
+		//Save form values for name/imgSrc/clicks to currentCat
 		saveBtn.addEventListener('click', function(){
-			//Update currentCat with input from form
-
+			//Save data
+			controller.saveData();
 			//Close admin form
-			hideAdmin();
+			adminView.hideAdmin();
 		})
 	},
 	hideAdmin: function(){
