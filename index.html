@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <title>Cat Clicker</title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+  <div class="col-md-12" id="catContainer">
+    <ul id="catList" class="col-md-1"></ul>
+    <div class="col-md-6" id="featuredCat">
+      <h2 id="featuredCatName"></h2>
+      <div id ="featuredCatCount"></div>
+      <img src="" id="featuredCatImage">
+    </div>
+    </div>
+<button type="button" class="btn" id="adminButton" style="margin-left: 10px">Admin</button>
+<form id="adminForm" style="margin-top: 30px; margin-left: 10px; display: none;">
+  Name : <input type="text" id="formCatName"></input>
+  Image Source : <input type="text" id="formImgSrc"></input>
+  Number of Clicks : <input type="number" id="formClickCount"></input>
+  <button type="button" id="adminCancelButton" class="btn" style="margin-left: 10px">Cancel</input>
+  <button type="button" id="adminSaveButton" class="btn" style="margin-left: 10px">Save</input>
+</form>
+  </div>
+</body>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+</html>
